@@ -1,0 +1,298 @@
+<script>
+
+    const tplPersonalDataForm = ({apellido, nombres, tipo_doc_id, nro_doc, fechanac, lugar_nacimiento, estado_civil, sexo, conyugue, direccion, barrio, id_provincia, id_localidad, cp, telefono_fijo, telefono_celular, nro_cuit, email, image, observaciones, readyonly}, index) => `
+                <form data-id='personal-data-form'>    
+                    <div class="image-controller-containter">
+                        <div class="row ${(image === '' ? 'd-none' : '')}">
+                            <div class="col-12">
+                                <img src='data:image/jpeg;base64,${image}' class="img-thumbnail rounded mx-auto d-block mb-1 img-personal-data" data-id='personal-data-form-prev-image'/>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info mx-auto mt-1 mb-2 p-0 img-button-personal-data ${(readyonly === '1' ? 'd-none' : 'd-block')}"><label for="personal-data-form-image-input"><i class="fas fa-image"></i> Cambiar Imagen</label></button>
+                        <input type="file" name="personal-data-image" class="personal-data-form-image-input" data-id="personal-data-form-image-input" id="personal-data-form-image-input">
+                        <hr class="mt-n1">
+                    </div>
+                    <div class="form-group">
+                      <label for="apellido">Apellido</label>
+                      <div class="input-group">
+                        <input type="text" value="${apellido}" name="apellido" disabled="disabled" class="form-control" id="apellido" placeholder="Apellido">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${apellido}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nombres">Nombres</label>
+                      <div class="input-group">
+                        <input type="text" value="${nombres}" name="nombres" disabled="disabled" class="form-control" id="nombres" placeholder="Nombres">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${nombres}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="tipodoc">Tipo Doc</label>
+                      <div class="input-group">
+                        <select name="tipo_doc_id" disabled="disabled" class="form-control" id="tipodoc" data-id='tipodoc'>
+                        </select>
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${tipo_doc_id}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="documento">Documento</label>
+                      <div class="input-group">
+                        <input type="text" value="${nro_doc}" name="nro_doc" disabled="disabled" class="form-control" id="documento" placeholder="Documento">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${nro_doc}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="fechanac">Fecha de Nacimiento</label>
+                      <div class="input-group">
+                        <input type="text" value="${fechanac}" name="fechanac" disabled="disabled" class="form-control" id="fechanac" placeholder="Fecha de Nacimiento">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${fechanac}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="lugarnac">Lugar de Nacimiento</label>
+                      <div class="input-group">
+                        <input type="text" value="${lugar_nacimiento}" name="lugar_nacimiento" disabled="disabled" class="form-control" id="lugarnac" placeholder="Lugar de Nacimiento">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${lugar_nacimiento}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="sexo">Sexo</label>
+                      <div class="input-group">
+                        <select name="sexo" disabled="disabled" class="form-control" id="sexo">
+                            <option value='F' ${(sexo == 'F' ? 'selected' : '')}>Femenino</option>
+                            <option value='M' ${(sexo == 'M' ? 'selected' : '')}>Masculino</option>
+                        </select>
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${sexo}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="tipodoc">Estado Civil</label>
+                      <div class="input-group">
+                        <select name="estado_civil" disabled="disabled" class="form-control" id="estadoCivil" data-id='estadoCivil'>
+                        </select>
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${estado_civil}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="conyuge">Cónyuge</label>
+                      <div class="input-group">
+                        <input type="text" value="${conyugue}" name="conyuge" disabled="disabled" class="form-control" id="conyuge" placeholder="Cónyuge">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${conyugue}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="mt-1 mb-1">
+                    <h5 class="col text-center">Dirección</h5>
+                    <hr class="mt-1 mb-1">
+                    <div class="form-group">
+                      <label for="direccion">Dirección</label>
+                      <div class="input-group">
+                        <input type="text" value="${direccion}" name="direccion" disabled="disabled" class="form-control" id="direccion" placeholder="Dirección">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${direccion}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="barrio">Barrio</label>
+                      <div class="input-group">
+                        <input type="text" value="${barrio}" name="barrio" disabled="disabled" class="form-control" id="barrio" placeholder="Barrio">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${barrio}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="prov">Provincia</label>
+                      <div class="input-group">
+                        <select name="id_provincia" disabled="disabled" class="form-control" id="prov" data-id='prov'>
+                        </select>
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${id_provincia}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="loca">Localidad</label>
+                      <div class="input-group">
+                        <select name="id_localidad" disabled="disabled" class="form-control" id="loca" data-id='loca'>
+                        </select>
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${id_localidad}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="codp">Código Postal</label>
+                      <div class="input-group">
+                        <input type="text" value="${cp}" name="cp" disabled="disabled" class="form-control" id="codp" placeholder="Código Postal">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${cp}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="mt-1 mb-1">
+                    <h5 class="col text-center">Otros Datos</h5>
+                    <hr class="mt-1 mb-1">
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="telf">Teléfono</label>
+                            <div class="input-group">
+                                <input type="text" value="${telefono_fijo}" name="telefono_fijo" disabled="disabled" class="form-control" id="telf" placeholder="Teléfono">
+                                <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${telefono_fijo}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="telc">Celular</label>
+                            <div class="input-group">
+                                <input type="text" value="${telefono_celular}" name="telefono_celular" disabled="disabled" class="form-control" id="telc" placeholder="Celular">
+                                <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${telefono_celular}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="nroc">N° CUIT (Sin Guiones)</label>
+                      <div class="input-group">
+                        <input type="text" value="${nro_cuit}" name="nro_cuit" disabled="disabled" class="form-control" id="nroc" placeholder="N° CUIT">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${nro_cuit}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="pdemail">E-Mail</label>
+                      <div class="input-group">
+                        <input type="text" value="${email}" name="email" disabled="disabled" class="form-control" id="pdemail" placeholder="E-Mail">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="${email}">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="observaciones">Observaciones</label>
+                      <div class="input-group">
+                        <input type="text" value="${observaciones}" name="observaciones" disabled="disabled" class="form-control" id="observaciones" placeholder="Observaciones">
+                        <div class="input-group-prepend ${(readyonly === '1' ? 'd-none' : '')}">
+                            <div class="input-group-text cursor-pointer text-info" title="Editar" data-id="edit-personal-data">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <div class="input-group-text cursor-pointer text-danger d-none" title="Cancelar" data-id="cancel-edit-personal-data" data-original-value="">
+                                <i class="far fa-times-circle"></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </form>
+`;
+</script>

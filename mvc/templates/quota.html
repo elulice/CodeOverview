@@ -1,0 +1,18 @@
+<script>
+
+    const tplQuotaData = ({id_cuota, descri_cuota, campania, mes, valor_cuota_pura, fecha_venc_1, fecha_venc_2, fecha_venc_3, momento_pagada, monto_a_pagar, estado }, index) => `
+                                                    <tr>
+                                                      ${(estado == '0' ? "<th scope='row'><input type='checkbox' data-id='quote-checkbox' quote-pure-amount='" + valor_cuota_pura + "' quote-amount='" + monto_a_pagar + "' data-request='" + id_cuota + "' class='text-center'/></th>" : "")}
+                                                      <th scope="row" class="font-weight-normal d-none">${id_cuota}</th>
+                                                      <th scope="row" class="font-weight-normal text-nowrap">${descri_cuota}</th>
+                                                      <th scope="row" class="font-weight-normal d-none">${campania}</th>
+                                                      <th scope="row" class="font-weight-normal text-nowrap">${mes}</th>
+                                                      <th scope="row" class="font-weight-normal d-none">${valor_cuota_pura}</th>
+                                                      <th scope="row" class="font-weight-normal d-none">${fecha_venc_1}</th>
+                                                      <th scope="row" class="font-weight-normal d-none">${fecha_venc_2}</th>
+                                                      <th scope="row" class="font-weight-normal d-none">${fecha_venc_3}</th>
+                                                      <td scope="row" class="font-weight-normal text-nowrap">${(estado == '0' ? "$" + monto_a_pagar + "<i class='fas fa-comment-dollar opt opt-pay' data-id='quote-pay-unique' data-request='" + id_cuota + "' title='Pagar Cuota'></i>" : momento_pagada)}</td>
+                                                      <td scope="row" class="d-none">${(estado == '1' ? 'YA ABONADA' : "SIN ABONAR")}</td>
+                                                    </tr>                                   
+`;
+</script>

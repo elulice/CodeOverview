@@ -1,0 +1,16 @@
+<script>
+
+    const tplPersonalData = ({id_solicitud, fecha_solicitud, fecha_cambio_estado, cod_member, estado, id_estado_solicitud, observaciones}, index) => `
+                                                    <tr>
+                                                      <th scope="row" class="">${id_solicitud}</th>
+                                                      <td>${fecha_solicitud}</td>
+                                                      <td>${fecha_cambio_estado}</td>
+                                                      <td>${estado}</td>
+                                                      <td>${observaciones}</td>
+                                                      <td>
+                                                        <i class="fas fa-eye opt opt-view" data-id='personal-data-view-detail' data-request='${id_solicitud}' title='Ver Detalles'></i>
+                                                        <i class="fas fa-ban opt opt-cancel ${(id_estado_solicitud !== "10" ? "d-none" : "")} " data-id="personal-data-view-cancel" data-request="${id_solicitud}" title="Cancelar Solicitud"></i>
+                                                      </td>
+                                                    </tr>                                   
+`;
+</script>
